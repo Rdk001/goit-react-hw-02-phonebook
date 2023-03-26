@@ -1,17 +1,17 @@
-import { Component } from 'react';
-class Filter extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Find contacts by name</h2>
+const Filter = ({ changeFilter, filter }) => {
+  return (
+    <div>
+      <h2>Find contacts by name</h2>
+      <label>
         <input
+          onChange={changeFilter}
           type="text"
-          name="filter"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          value={filter}
+          //   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         />
-      </div>
-    );
-  }
-}
+      </label>
+    </div>
+  );
+};
 
 export default Filter;

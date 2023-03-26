@@ -1,5 +1,6 @@
 import { Component } from 'react';
-import Span from './ContactList.styled';
+import { Span, DeleteItem } from './ContactList.styled';
+
 class ContactsList extends Component {
   render() {
     return (
@@ -7,8 +8,15 @@ class ContactsList extends Component {
         <ul>
           {this.props.contacts.map(({ id, name, number }) => (
             <li key={id}>
-              <Span>{name}: </Span>
-              <Span>{number}</Span>
+              <Span>
+                {name}: {number}
+              </Span>
+              <DeleteItem
+                type="button"
+                onClick={() => this.props.onDeleteContact(id)}
+              >
+                Delete
+              </DeleteItem>
             </li>
           ))}
         </ul>

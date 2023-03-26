@@ -1,30 +1,34 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 import { FormContainer, Form, Text, Input, Submit } from './ContactForm.styled';
+
 class ContactForm extends Component {
   state = {
     name: '',
     number: '',
   };
-  resetForm = () => {
-    this.setState({ name: '', number: '' });
-  };
 
   handleSubmit = e => {
     e.preventDefault();
 
+    const { name, number } = this.state;
+
     this.props.onSubmit({
       id: nanoid(),
-      name: this.state.name,
-      number: this.state.number,
+      name: name,
+      number: number,
     });
 
-    this.resetForm();
+    this.reset();
   };
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
+  };
+
+  reset = () => {
+    this.setState({ name: '', number: '' });
   };
 
   render() {
