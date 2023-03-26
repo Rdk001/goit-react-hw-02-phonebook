@@ -11,24 +11,22 @@ class ContactForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
-    const { name, number } = this.state;
+    const { name, number } = e.target.elements;
+    // const { name, number } = this.state;
 
     this.props.onSubmit({
       id: nanoid(),
-      name: name,
-      number: number,
+      name: this.state.name,
+      number: this.state.number,
     });
 
-    this.reset();
+    name.value = '';
+    number.value = '';
   };
 
   handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
-  };
-
-  reset = () => {
-    this.setState({ name: '', number: '' });
   };
 
   render() {
